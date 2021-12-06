@@ -6,15 +6,18 @@ from Enumerate.enums import Mode
 
 class File:
     """Класс текстового файла. Включена обработка ошибок."""
-    def __init__(self, path: str, mode: Mode):
+    def __init__(self, path: str, mode):
         self.path = path
         self.is_correct = 400
         self.mode = mode
+        self.data = []
+        self.f = None
 
-        if self.is_correct == 200:
+        self.set_correct()
+
+        if self.is_correct == 200 and self.mode == Mode.Read:
             self.f = open(self.path, self.mode.value.type.value)
-            if self.mode == Mode.Read:
-                self.data = self.f.readlines()
+            self.data = self.f.readlines()
 
     def __del__(self):
         if self.is_correct == 200:
@@ -22,18 +25,20 @@ class File:
 
     def set_correct(self):
         """Проверка файла на корректность"""
-        if not os.path.exists(self.path):
-            self.is_correct = 404
-        elif not os.path.isfile(self.path):
-            self.is_correct = 405
-        else:
-            self.is_correct = 200
+        self.is_correct = 200
+        if self.mode == Mode.Read:
+            if not os.path.exists(self.path):
+                self.is_correct = 404
+            elif not os.path.isfile(self.path):
+                self.is_correct = 405
 
     def write_file(self, data: list):
-        if self.mode != Mode.Write:
+        if self.mode != Mode.Write and self.is_correct == 200:
             return 403
+        self.f = open(self.path, self.mode.value.type.value)
         self.data = data
         self.f.writelines(data)
+        self.f.close()
 
     def sort_up(self):
         """Сортировка строк файла по возрастанию"""
