@@ -12,8 +12,7 @@ bot = telebot.TeleBot(token, parse_mode=None)
 def start_command(message):
     text = "Приветствую тебя, <b>{}</b>!".format(message.from_user.username)
     bot.send_message(message.from_user.id, text, parse_mode="HTML")
-    bot.send_photo(message.from_user.id, 'https://i.pinimg.com/474x/2f/16/02/2f1602f14b24dc574bb76cd512ebc24e--black'
-                                         '-kittens-warrior-cats.jpg')
+    bot.send_video(message.from_user.id, open('media/photo/4.gif', 'rb'))
     text = "Чем сегодня займемся, мяу? ^_^"
     bot.send_message(message.from_user.id, text, parse_mode="HTML", reply_markup=get_default_menu())
 

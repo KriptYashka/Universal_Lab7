@@ -69,6 +69,13 @@ def yesterday_weather():
 
 
 def joke():
-    text = ["О, а я знаю один анекдот!"]
+    text = ["О, а я знаю один анекдот!", "Значит слушай...", "Без проблем!"]
     res = random.choice(text) + "\n" + anektod.get_joke()
+    return res
+
+
+def joke_for_fish(fish):
+    text = [f"Может за это ты мне пришлёшь {fish} эту рыбку?",
+            f"За рыбку раскажу. А хочу я именно {fish}"]
+    res = random.choice(text)
     return res

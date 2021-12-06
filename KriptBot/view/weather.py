@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup as bs
 
 def get_data():
     r = requests.get(
-        'https://www.yandex.com/weather/segment/details?offset=0&lat=55.753215&lon=37.622504&geoid=213&limit=10',
+        'https://www.yandex.com/weather/segment/details?offset=0&lat=55.753215&lon=37.622504&geoid=213',
         headers={'User-Agent': 'Mozilla/5.0'})
     soup = bs(r.content, 'html.parser')
 
@@ -13,7 +13,7 @@ def get_data():
         # date = ' '.join([i.text for i in card.select('[class$=number],[class$=month]')])
         temps = list(zip(
             [i.text for i in card.select('.weather-table__daypart')]
-            , [i.text for i in card.select('.weather-table__body-cell_type_feels-like .temp__value')]
+            , [i.text for i in card.select('.weather-table__body-cell_type_daypart .temp__value')]
         ))
         if len(temps) > 0:
             res.append(temps)
