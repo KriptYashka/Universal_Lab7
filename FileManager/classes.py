@@ -37,6 +37,8 @@ class File:
             return 403
         self.f = open(self.path, self.mode.value.type.value)
         self.data = data
+        for i in range(len(data)):
+            data[i] = data[i].replace("\n", "") + "\n"
         self.f.writelines(data)
         self.f.close()
 
