@@ -5,9 +5,8 @@ def get_default_menu():
     """Выдает меню для пользователя."""
     menu = telebot.types.ReplyKeyboardMarkup()
 
-    params = ['Расскажи анектот',
-              'Помощь',
-              ]
+    params = ['Расскажи анекдот',
+              'Помощь']
 
     for item in params:
         if isinstance(item, list):

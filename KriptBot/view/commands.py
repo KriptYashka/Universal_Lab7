@@ -1,6 +1,9 @@
 import re
+from KriptBot.brench_communicate import hello, weather
 
-classic_cmd = {
-    r"прив|здравств": user_profile_edit.registration,
-    r"ы": help.send_help_text
+mery_cmd = {
+    r"\bпривет|здра?ств|\bку\b": hello.send_hello,
+    r"\bкак дела|что делаешь|\bчем занимаешься|как ты": hello.send_how_are_you,
+    r"завтра погода|завтра температур|сколько завтра градус": weather.send_weather_yesterday,
+    r"расскажи анекдот|шутку|прикол": hello.send_joke,
 }
