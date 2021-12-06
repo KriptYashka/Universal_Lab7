@@ -3,3 +3,4 @@ yandex_weather_api
 bs4
 beautifulsoup4
 requests
+pytelegrambotapi
