@@ -79,3 +79,10 @@ def joke_for_fish(fish):
             f"За рыбку раскажу. А хочу я именно {fish}"]
     res = random.choice(text)
     return res
+
+
+def send_photo():
+    text = ["Интересная картинка. Но у меня лучше)",
+            "Продаешь? Нет? Только посмотреть? Красивое...",
+            "А у меня есть фотка получше!"]
+    return random.choice(text)

@@ -4,6 +4,8 @@ from view.menu import get_default_menu
 from view.commands import mery_cmd
 from view import random_phrases as dialog
 
+from KriptBot.brench_communicate.media import send_photo
+
 token = "5052598391:AAEkznKpNqmh2dmy9HehEpOBjGIsGqSG3fg"  # Не смейте трогать моего бота! Меняйте токен
 bot = telebot.TeleBot(token, parse_mode=None)
 
@@ -30,6 +32,10 @@ def listen_text_message(message):
 
     bot.send_message(message.from_user.id, dialog.dont_know(), reply_markup=get_default_menu())
 
+
+@bot.message_handler(content_types=["photo", "sticker", "audio"])
+def listen_photo_message(message):
+    send_photo(message, bot)
 
 
 def main():
