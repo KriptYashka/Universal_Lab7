@@ -15,7 +15,8 @@ def start_command(message):
     text = "Приветствую тебя, <b>{}</b>!".format(message.from_user.username)
     bot.send_message(message.from_user.id, text, parse_mode="HTML")
     bot.send_video(message.from_user.id, open('KriptBot/media/photo/4.gif', 'rb'))
-    text = "Чем сегодня займемся, мяу? ^_^"
+    text = "Хочу поделится с тобой классными супер-пупер-ультра-комбо-мега стикерами, но для начала подпишись на " \
+           "группу https://t.me/ochki_zaychki\n\nЕсли подписался, напиши мне 'Стикеры' и я поделюсь с тобой ^_^"
     bot.send_message(message.from_user.id, text, parse_mode="HTML", reply_markup=get_default_menu())
 
 
@@ -29,13 +30,14 @@ def listen_text_message(message):
         if re.search(regular, msg_text):
             action(message, bot)
             return
-
     bot.send_message(message.from_user.id, dialog.dont_know(), reply_markup=get_default_menu())
 
 
 @bot.message_handler(content_types=["photo", "sticker", "audio"])
 def listen_photo_message(message):
-    send_photo(message, bot)
+    # send_photo(message, bot)
+    bot.send_message(message.from_user.id, dialog.dont_know(), reply_markup=get_default_menu())
+
 
 
 def main():
