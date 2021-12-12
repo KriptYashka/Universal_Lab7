@@ -6,21 +6,19 @@ from KriptBot.view.menu import get_default_menu, button_menu
 channel_id = "@ochki_zaychki"
 
 
-def check_sub_channel(chat_member):
-    if chat_member is None:
-        return True
-    if chat_member['status'] != "left":
-        return True
-    return False
+# def check_sub_channel(chat_member):
+#     if chat_member is None:
+#         return False
+#     return True
 
 
 def stiker(message, bot):
     user_id = message.from_user.id
     try:
-        user = bot.get_chat_member(chat_id=-1001550334261, user_id=user_id)
+        flag = bot.get_chat_member(chat_id=-1001550334261, user_id=user_id)
     except:
-        user = None
-    if check_sub_channel(user):
+        flag = False
+    if flag.status != "left":
         bot.send_message(user_id, "Все прекрасно, вижу тебя)\nДержи классный стикерпак, так держать!\n\nА теперь...")
         bot.send_sticker(user_id, "CAACAgIAAxkBAAEDdvVhtRwV_0asD9vA0Er4zR5URI50UQACPxUAAuw1qUmw0gmusSURiyME")
         bot.send_message(user_id, "На самом деле я шучу, лучше оставайся с нами, так веселее ^_^",
