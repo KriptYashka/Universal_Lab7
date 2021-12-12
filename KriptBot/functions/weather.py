@@ -10,7 +10,6 @@ def get_data():
 
     res = list()
     for card in soup.select('.card:not(.adv)'):
-        # date = ' '.join([i.text for i in card.select('[class$=number],[class$=month]')])
         temps = list(zip(
             [i.text for i in card.select('.weather-table__daypart')]
             , [i.text for i in card.select('.weather-table__body-cell_type_daypart .temp__value')]
