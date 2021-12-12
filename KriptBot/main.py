@@ -15,7 +15,7 @@ def start_command(message):
     text = "Приветствую тебя, <b>{}</b>!".format(message.from_user.username)
     bot.send_message(message.from_user.id, text, parse_mode="HTML")
     bot.send_video(message.from_user.id, open('KriptBot/media/photo/4.gif', 'rb'))
-    text = "Наука и технологии в тренде!\nПодпишись и забирай самые трендовые стикеры!, но для начала подпишись на " \
+    text = "Наука и технологии в тренде!\nПодпишись и забирай самые трендовые стикеры! Но для начала подпишись на " \
            "группу https://t.me/ochki_zaychki\n\nЕсли подписался, напиши мне <b>Хочу стикеры</b> и я поделюсь с " \
            "ими тобой ^_^"
     bot.send_message(message.from_user.id, text, parse_mode="HTML", reply_markup=get_default_menu())
