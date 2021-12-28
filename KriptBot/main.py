@@ -6,7 +6,7 @@ from view import random_phrases as dialog
 
 from KriptBot.brench_communicate.media import send_photo
 
-token = "5052598391:AAEkznKpNqmh2dmy9HehEpOBjGIsGqSG3fg"  # Не смейте трогать моего бота! Меняйте токен
+token = "5052598391:AAEBBvip6Th7wgzYNxNHdDlErVdt64zStis"  # Не смейте трогать моего бота! Меняйте токен
 bot = telebot.TeleBot(token, parse_mode=None)
 
 
